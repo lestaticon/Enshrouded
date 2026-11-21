@@ -101,7 +101,7 @@ def copy_content() -> None:
     for name in CONTENT_DIRS:
         src = ROOT / name
         if src.is_dir():
-            shutil.copytree(src, OUT / name)
+            shutil.copytree(src, OUT / name, ignore=shutil.ignore_patterns("_*"))
     shutil.copytree(ROOT / "site-assets", OUT / "assets")
 
 
