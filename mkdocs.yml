@@ -1,0 +1,72 @@
+# Guide website for the Enshrouded knowledge base.
+# Build with:  python tools/build_site.py build   (preview: python tools/build_site.py serve)
+site_name: Enshrouded Field Guide
+site_description: Locations, crafting and progression for Enshrouded (PS5 and PC).
+repo_url: https://github.com/lestaticon/Enshrouded
+repo_name: lestaticon/Enshrouded
+edit_uri: ""
+
+# tools/build_site.py assembles this folder from the repo's content and data.
+docs_dir: .site-src
+site_dir: site
+
+hooks:
+  - tools/nav_order.py
+
+theme:
+  name: material
+  language: en
+  icon:
+    logo: material/campfire
+  favicon: assets/favicon.svg
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - toc.follow
+
+plugins:
+  - search
+  - tags
+
+extra_css:
+  - assets/extra.css
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+not_in_nav: |
+  /assets/**

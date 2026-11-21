@@ -1,0 +1,495 @@
+# Enshrouded early-game crafting chains (tools, weapons, and the stations/materials behind them)
+# Scope: start of game through the copper/bronze tier (Springlands -> Revelwood start).
+# Game version: 1.0 (released 2026-10-15, PC + PS5). Recipes are the same on both platforms.
+#
+# confidence values:
+#   confirmed      - two independent sources agree
+#   single_source  - one current (1.0-era) source, no contradiction found
+#   uncertain      - sources disagree, are unclear, or the field was not stated; see `note`
+# Quantities are per craft. `output` defaults to 1 when omitted.
+
+meta:
+  compiled: 2026-11-21
+  game_version: "1.0"
+  sources:
+    atw_handcraft: https://allthings.how/enshrouded-1-0-all-workbench-and-hand-crafting-recipes/   # updated 2026-10-22
+    atw_early: https://allthings.how/enshrouded-1-0-the-early-game-from-starting-tomb-to-first-ancient-spire/  # updated 2026-10-19
+    atw_blacksmith: https://allthings.how/enshrouded-1-0-all-blacksmith-recipes/   # updated 2026-10-22
+    atw_bronze: https://allthings.how/enshrouded-1-0-how-to-make-bronze-bars/   # updated 2026-10-24
+    atw_sheets: https://allthings.how/enshrouded-1-0-how-to-get-metal-sheets/   # updated 2026-10-16
+    atw_scraps: https://allthings.how/enshrouded-1-0-best-early-game-metal-scraps-farm/   # updated 2026-10-19
+    wiki_workbench: https://enshrouded.wiki.gg/wiki/Workbench   # edited 2026-10-15
+    wiki_copper: https://enshrouded.wiki.gg/wiki/Copper_Bars   # edited 2026-10-15
+    wiki_scraps: https://enshrouded.wiki.gg/wiki/Metal_Scraps   # edited 2026-05-15
+    wiki_forge: https://enshrouded.wiki.gg/wiki/Forge   # edited 2025-08-31 (pre-1.0)
+
+# ---------------------------------------------------------------------------
+# Progression: the order things unlock in
+# ---------------------------------------------------------------------------
+progression:
+  - step: 1
+    where: Cinder Vault (starting tomb)
+    action: Commune with the Flame
+    unlocks: [flame_altar]
+    sources: [atw_early]
+    confidence: single_source
+  - step: 2
+    where: Starter cave after the Cinder Vault
+    action: Break wooden crates; pick up Torn Cloth from scavengers
+    unlocks: [campfire, tiny_backpack]
+    sources: [atw_early]
+    confidence: single_source
+  - step: 3
+    where: Return Beacon past the caves
+    action: Reach it after leaving the Cinder Vault for the first time
+    unlocks: [workbench]
+    sources: [wiki_workbench]
+    confidence: single_source
+  - step: 4
+    where: Your base
+    action: Gather Twigs, Plant Fiber, Stone; craft first tools
+    unlocks: [axe, pickaxe, bow, wooden_arrow]
+    sources: [atw_early]
+    confidence: uncertain
+    note: Guide says you craft these here but does not state the exact unlock trigger.
+  - step: 5
+    where: Your base
+    action: Place the Flame Altar (40x40x40 m build area)
+    unlocks: [wooden_shield, ragged_shirt]
+    sources: [atw_early, atw_handcraft]
+    confidence: confirmed
+  - step: 6
+    where: Braelyn Bridge (north end), Ancient Vault
+    action: Quest "Find the Sleeping Survivor"; wake Oswald Anders at the Cinder Vessel
+    npc: Oswald Anders (Blacksmith)
+    then: Craft a Summoning Staff (1 Twig), place him at base; give him a sheltered bed
+    unlocks: [blacksmith_recipes, charcoal_kiln, forge, scrappy_pickaxe, scrappy_axe, scrappy_sword]
+    sources: [atw_early, atw_blacksmith]
+    confidence: confirmed
+  - step: 7
+    where: Blacksmith quest chain
+    action: Quest "Crucible Needed For A Smelter"
+    unlocks: [crucible, smelter, copper_bars]
+    sources: [wiki_copper, atw_bronze]
+    confidence: single_source
+    note: Quest name from the wiki only; allthings agrees the Crucible gates the Smelter.
+  - step: 8
+    where: Revelwood (copper), Nomad Highlands shroud (tin)
+    action: Pick up both Copper Ore and Tin Ore while owning a Smelter
+    unlocks: [bronze_bars]
+    sources: [atw_bronze]
+    confidence: single_source
+    note: Tin is not truly early game; listed so the bronze chain is complete.
+
+# ---------------------------------------------------------------------------
+# Stations
+# ---------------------------------------------------------------------------
+stations:
+  flame_altar:
+    crafted_at: hand
+    ingredients: {stone: 5}
+    unlock: Commune with the Flame in the Cinder Vault
+    sources: [atw_handcraft, atw_early]
+    confidence: confirmed
+  campfire:
+    crafted_at: hand
+    ingredients: {wood_logs: 2}
+    unlock: Break wooden crates in the starter cave
+    sources: [atw_handcraft, atw_early]
+    confidence: confirmed
+  workbench:
+    crafted_at: hand
+    ingredients: {string: 3, wood_logs: 8}
+    unlock: Reach the Return Beacon past the starter caves
+    sources: [atw_handcraft, wiki_workbench]
+    confidence: confirmed
+    note: Must be placed inside a Flame Altar area.
+  charcoal_kiln:
+    crafted_at: blacksmith
+    ingredients: {stone: 20}
+    unlock: Rescue Oswald Anders (Blacksmith)
+    sources: [atw_blacksmith, atw_early]
+    confidence: confirmed
+  forge:
+    crafted_at: blacksmith
+    ingredients: {stone: 30, metal_scraps: 10, charcoal: 10, wood_logs: 12}
+    unlock: Rescue Oswald Anders (Blacksmith)
+    sources: [atw_blacksmith, wiki_forge]
+    confidence: confirmed
+    note: Wiki also allows the Blacksmith Assistant to craft it.
+  crucible:
+    crafted_at: blacksmith
+    ingredients: {lump_of_clay: 3, springlands_dirt: 3, sand: 5}
+    unlock: Quest "Crucible Needed For A Smelter"
+    sources: [atw_blacksmith, wiki_copper]
+    confidence: single_source
+    note: Any sand type (Fine Sand, Veilwater Basin Sand) works.
+  smelter:
+    crafted_at: blacksmith
+    ingredients: {fired_bricks: 50, crucible: 1}
+    unlock: Have a Crucible
+    sources: [atw_blacksmith, atw_bronze]
+    confidence: confirmed
+
+# ---------------------------------------------------------------------------
+# Intermediate materials (the chains)
+# ---------------------------------------------------------------------------
+materials:
+  string:
+    crafted_at: hand
+    ingredients: {plant_fiber_or_paper_reed: 3}
+    sources: [atw_handcraft]
+    confidence: single_source
+  metal_scraps:
+    crafted_at: none
+    obtain:
+      - Scavenger drops (0-5 each, varies by type)
+      - Metal urn pods in the Cinder Vault starting chamber (~5 each, respawn ~45 min)
+      - Loose pickups in Rookmore (north past Braelyn Bridge)
+    sources: [wiki_scraps, atw_scraps]
+    confidence: uncertain
+    note: Not craftable or mined. Sources disagree on which scavenger types drop scraps.
+  charcoal:
+    crafted_at: charcoal_kiln
+    ingredients: {wood_logs: 12, dirt: 3}
+    output: 10
+    sources: [atw_blacksmith]
+    confidence: single_source
+    note: Hardwood or Palm logs and any regional dirt also work.
+  wood_acid:
+    crafted_at: charcoal_kiln
+    ingredients: {wood_logs: 15, dirt: 3}
+    output: 10
+    sources: [atw_bronze]
+    confidence: single_source
+  fired_bricks:
+    crafted_at: charcoal_kiln
+    ingredients: {lump_of_clay: 1, wood_logs: 1}
+    sources: [atw_bronze]
+    confidence: uncertain
+    note: Output per craft not stated.
+  metal_sheets:
+    crafted_at: forge
+    ingredients: {metal_scraps: 2, charcoal: 2}
+    craft_time_s: 90
+    sources: [atw_sheets]
+    confidence: uncertain
+    note: The (pre-1.0) wiki Forge page does not list Metal Sheets as a Forge output. Output count implied, not stated.
+  nails:
+    crafted_at: blacksmith
+    ingredients: {metal_scraps: 1}
+    output: 2
+    sources: [atw_blacksmith]
+    confidence: uncertain
+    note: Full ingredient list and station detail not stated.
+  copper_bars:
+    crafted_at: smelter
+    ingredients: {copper_ore: 10, charcoal: 10}
+    output: 10
+    craft_time_s: 210
+    sources: [wiki_copper, atw_bronze]
+    confidence: confirmed
+    note: Copper Ore is found in the Revelwood.
+  tin_bars:
+    crafted_at: smelter
+    ingredients: {tin_ore: 10, charcoal: 10, wood_acid: 2}
+    output: 10
+    craft_time_s: 240
+    sources: [atw_bronze]
+    confidence: single_source
+  bronze_bars:
+    crafted_at: smelter
+    ingredients: {copper_bars: 7, tin_bars: 3, charcoal: 10}
+    output: 10
+    craft_time_s: 240
+    sources: [atw_bronze, wiki_copper]
+    confidence: confirmed
+
+# ---------------------------------------------------------------------------
+# Tools
+# ---------------------------------------------------------------------------
+tools:
+  axe:
+    crafted_at: hand
+    level: 1
+    ingredients: {twigs: 4, stone: 1, string: 1}
+    sources: [atw_handcraft]
+    confidence: single_source
+  pickaxe:
+    crafted_at: hand
+    level: 1
+    ingredients: {stone: 1, twigs: 4, string: 1}
+    sources: [atw_handcraft]
+    confidence: single_source
+  torch:
+    crafted_at: hand
+    level: 1
+    ingredients: {twigs: 1, plant_fiber_or_paper_reed: 1}
+    sources: [atw_handcraft]
+    confidence: single_source
+  construction_hammer:
+    crafted_at: [hand, workbench]
+    ingredients: {stone: 1}
+    sources: [atw_handcraft]
+    confidence: single_source
+  summoning_staff:
+    crafted_at: hand
+    ingredients: {twigs: 1}
+    purpose: Place rescued NPCs at your base
+    sources: [atw_handcraft, atw_early]
+    confidence: confirmed
+  simple_fishing_rod:
+    crafted_at: hand
+    ingredients: {twigs: 2, metal_scraps: 2, string: 1}
+    sources: [atw_handcraft]
+    confidence: uncertain
+    note: Unlock not stated.
+  glider:
+    crafted_at: workbench
+    ingredients: {shroud_wood: 8, animal_fur: 2, string: 2, shroud_spores: 2}
+    sources: [atw_handcraft]
+    confidence: uncertain
+    note: Unlock trigger not stated.
+  grappling_hook:
+    crafted_at: workbench
+    ingredients: {metal_scraps: 4, string: 7, shroud_spores: 10}
+    sources: [atw_handcraft, atw_early]
+    confidence: uncertain
+    note: Early guide ties the unlock to picking up Torn Cloth; that looks odd and needs an in-game check.
+  rake:
+    crafted_at: workbench
+    ingredients: {wood_logs: 6, string: 2, stone: 2}
+    sources: [atw_handcraft]
+    confidence: uncertain
+    note: Unlock not stated.
+  scrappy_axe:
+    crafted_at: blacksmith
+    level: 5
+    ingredients: {string: 3, metal_scraps: 4, shroud_wood: 1}
+    unlock: Blacksmith + sheltered bed
+    sources: [atw_blacksmith]
+    confidence: single_source
+  scrappy_pickaxe:
+    crafted_at: blacksmith
+    level: 5
+    ingredients: {metal_scraps: 8, shroud_wood: 1}
+    unlock: Blacksmith + sheltered bed
+    sources: [atw_blacksmith, atw_early]
+    confidence: confirmed
+  copper_axe:
+    crafted_at: blacksmith
+    level: 10
+    ingredients: {string: 3, copper_bars: 4, hardwood: 1}
+    sources: [atw_blacksmith]
+    confidence: single_source
+  copper_pickaxe:
+    crafted_at: blacksmith
+    level: 10
+    ingredients: {copper_bars: 8, hardwood: 1}
+    sources: [atw_blacksmith]
+    confidence: single_source
+  bronze_axe:
+    crafted_at: blacksmith
+    level: 15
+    ingredients: {linen: 3, bronze_bars: 4, hardwood: 1}
+    sources: [atw_blacksmith]
+    confidence: single_source
+  bronze_pickaxe:
+    crafted_at: blacksmith
+    level: 15
+    ingredients: {bronze_bars: 8, hardwood: 1}
+    sources: [atw_blacksmith]
+    confidence: single_source
+  watering_can:
+    crafted_at: blacksmith
+    ingredients: {charcoal: 4, metal_scraps: 6, coal_powder: 1}
+    sources: [atw_blacksmith]
+    confidence: uncertain
+    note: Coal Powder source not found in any page read.
+
+# ---------------------------------------------------------------------------
+# Weapons
+# ---------------------------------------------------------------------------
+weapons:
+  # Hand-crafted
+  bow:
+    crafted_at: hand
+    ingredients: {twigs: 5, string: 1}
+    sources: [atw_handcraft, atw_early]
+    confidence: confirmed
+  wooden_arrow:
+    crafted_at: hand
+    level: 3
+    ingredients: {twigs: 2}
+    output: 10
+    sources: [atw_handcraft]
+    confidence: single_source
+  club:
+    crafted_at: hand
+    level: 3
+    ingredients: {wood_logs: 6, stone: 1}
+    sources: [atw_handcraft]
+    confidence: single_source
+  daggers:
+    crafted_at: hand
+    level: 3
+    ingredients: {metal_scraps: 4}
+    sources: [atw_handcraft]
+    confidence: single_source
+  staff:
+    crafted_at: hand
+    ingredients: {bones: 3, string: 1}
+    sources: [atw_handcraft]
+    confidence: single_source
+  wand:
+    crafted_at: hand
+    level: 3
+    ingredients: {bones: 2}
+    sources: [atw_handcraft]
+    confidence: single_source
+  wooden_shield:
+    crafted_at: hand
+    ingredients: {wood_logs: 6, string: 1}
+    unlock: Place a Flame Altar
+    sources: [atw_handcraft, atw_early]
+    confidence: confirmed
+  explosive_powder_ball:
+    crafted_at: hand
+    level: 10
+    ingredients: {metal_scraps: 2, charcoal: 2, tar: 2, plant_fiber_or_paper_reed: 1}
+    unlock: Pick up Charcoal
+    sources: [atw_handcraft, atw_early]
+    confidence: confirmed
+  # Blacksmith, scrap tier
+  scrappy_sword:
+    crafted_at: blacksmith
+    level: 5
+    ingredients: {wood_logs: 1, metal_scraps: 3, nails: 2}
+    sources: [atw_blacksmith]
+    confidence: single_source
+  spiked_club:
+    crafted_at: blacksmith
+    level: 5
+    ingredients: {nails: 4, wood_logs: 4}
+    sources: [atw_blacksmith]
+    confidence: single_source
+  fenrigs_axe_6:
+    crafted_at: blacksmith
+    level: 6
+    ingredients: {metal_sheets: 4, charcoal: 2, wood_logs: 3}
+    sources: [atw_blacksmith]
+    confidence: single_source
+  wailing_blade_6:
+    crafted_at: blacksmith
+    level: 6
+    ingredients: {metal_sheets: 4, resin: 4, tar: 2}
+    sources: [atw_blacksmith]
+    confidence: single_source
+  pikemeads_bulwark_scrap:
+    crafted_at: blacksmith
+    ingredients: {shroud_core: 1, metal_sheets: 3, nails: 2}
+    sources: [atw_blacksmith]
+    confidence: uncertain
+    note: Level not stated.
+  rising_fighter_shield:
+    crafted_at: blacksmith
+    ingredients: {string: 6, metal_sheets: 5, wood_logs: 2}
+    sources: [atw_blacksmith]
+    confidence: uncertain
+    note: Level not stated.
+  # Blacksmith, copper tier
+  fenrigs_axe_11:
+    crafted_at: blacksmith
+    level: 11
+    ingredients: {copper_bars: 4, charcoal: 3, hardwood: 3}
+    sources: [atw_blacksmith]
+    confidence: single_source
+  hailscourge_11:
+    crafted_at: blacksmith
+    level: 11
+    ingredients: {copper_bars: 3, glow_dust: 2, brittle_shroud_petals: 1, hardwood: 3}
+    sources: [atw_blacksmith]
+    confidence: single_source
+  wailing_blade_11:
+    crafted_at: blacksmith
+    level: 11
+    ingredients: {copper_bars: 4, amber: 5, tar: 3}
+    sources: [atw_blacksmith]
+    confidence: single_source
+  riptide_copper:
+    crafted_at: blacksmith
+    ingredients: {copper_bars: 4, poison_sack: 2, hardwood: 3}
+    sources: [atw_blacksmith]
+    confidence: uncertain
+    note: Level not stated.
+  pikemeads_bulwark_copper:
+    crafted_at: blacksmith
+    ingredients: {shroud_core: 2, copper_bars: 3, nails: 3}
+    sources: [atw_blacksmith]
+    confidence: uncertain
+    note: Level not stated.
+  heros_shield:
+    crafted_at: blacksmith
+    ingredients: {linen: 5, copper_bars: 5, charcoal: 5}
+    sources: [atw_blacksmith]
+    confidence: uncertain
+    note: Level not stated.
+  # Blacksmith, bronze tier (level 16)
+  lupas_scalper_16:
+    crafted_at: blacksmith
+    level: 16
+    ingredients: {bronze_bars: 5, leather: 2, fossilized_bone: 2}
+    sources: [atw_blacksmith]
+    confidence: single_source
+  dragon_sword_16:
+    crafted_at: blacksmith
+    level: 16
+    ingredients: {bronze_bars: 3, tin_bars: 1, resin: 2, tar: 2}
+    sources: [atw_blacksmith]
+    confidence: single_source
+  fenrigs_axe_16:
+    crafted_at: blacksmith
+    level: 16
+    ingredients: {bronze_bars: 4, charcoal: 4, fossilized_bone: 3}
+    sources: [atw_blacksmith]
+    confidence: single_source
+  hailscourge_16:
+    crafted_at: blacksmith
+    level: 16
+    ingredients: {bronze_bars: 3, glow_dust: 3, brittle_shroud_petals: 2, fossilized_bone: 3}
+    sources: [atw_blacksmith]
+    confidence: single_source
+  wailing_blade_16:
+    crafted_at: blacksmith
+    level: 16
+    ingredients: {bronze_bars: 4, amber: 6, tar: 4}
+    sources: [atw_blacksmith]
+    confidence: single_source
+  wolfs_hydra_16:
+    crafted_at: blacksmith
+    level: 16
+    ingredients: {bronze_bars: 4, metal_sheets: 4, charcoal: 4}
+    sources: [atw_blacksmith]
+    confidence: single_source
+  soothsayer_16:
+    crafted_at: blacksmith
+    level: 16
+    ingredients: {bronze_bars: 2, wood_planks: 5, fossilized_bone: 5}
+    sources: [atw_blacksmith]
+    confidence: single_source
+  jezminas_apotheosis_16:
+    crafted_at: blacksmith
+    level: 16
+    ingredients: {bronze_bars: 4, calla_luna: 3, amber: 4, fossilized_bone: 3}
+    sources: [atw_blacksmith]
+    confidence: single_source
+
+# ---------------------------------------------------------------------------
+# Open questions to check in-game
+# ---------------------------------------------------------------------------
+open_questions:
+  - What exactly unlocks the Glider and Grappling Hook recipes in 1.0?
+  - Is Metal Sheets crafted at the Forge in 1.0 (allthings says yes; older wiki page does not list it)?
+  - Which scavenger types drop Metal Scraps (wiki and allthings lists barely overlap)?
+  - Where does Coal Powder come from (needed for the Watering Can)?
+  - Fired Bricks output per craft.
